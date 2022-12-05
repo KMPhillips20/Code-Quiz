@@ -1,10 +1,12 @@
 var questions = document.querySelectorAll('.question');
 var cursor = 0;
 
+
+var correctAnswers = ["0", "3", "1", "2"];
+
 var displayQuestion = function () {
     for (var question of questions) {
-        console.log(question);
-        if (question.dataset.index != cursor) {
+         if (question.dataset.index != cursor) {
             question.style.display = 'none';
         } else {
             question.style.display = 'block';
@@ -14,14 +16,14 @@ var displayQuestion = function () {
 
 var advance = function(event) {
     var element = event.target;
-    console.log(element);
-
     if (element.matches('.question button')) {
-        if (cursor < questions.length -1) {
-        cursor++;
+      var answer = element.dataset.choice === correctAnswers[cursor];
+       
+        if (cursor < questions.length ) {
+         cursor++;
+        }
+         displayQuestion();
     }
-    displayQuestion();
-}
 };
 
 document.addEventListener('click', advance);

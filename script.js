@@ -1,6 +1,6 @@
 var questions = document.querySelectorAll('.question');
 var cursor = 0;
-var correctAnswers = ["0", "3", "1", "2"];
+var correctAnswers = ["0", "B", "D", "A","B","B"];
 const startingMinutes=1;
 
 
@@ -33,7 +33,8 @@ var advance = function(event) {
     var element = event.target;
     if (element.matches('.question button')) {
       var answer = element.dataset.choice === correctAnswers[cursor];
-       
+       console.log(answer)
+    
         if (cursor < questions.length ) {
          cursor++;
         }

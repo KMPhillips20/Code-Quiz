@@ -1,4 +1,8 @@
 body {
+    background-color:rgb(14, 4, 38);
+}
+
+body {
     font-family: 'Roboto, sans-serif';
     margin: 0;
    
@@ -33,9 +37,9 @@ h2 {
 
 
 button {
-    background-color: blue;
-    color:white;
-    border: solid white;
+    background-color:white;
+    color:black;
+    border: solid aqua 8px;
     font-size: 25px;
 }
 

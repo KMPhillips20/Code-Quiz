@@ -9,42 +9,57 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <p id="countdown">:60</p>
     <header>
-        <h1>Code Quiz Challenge </h1>
-       
+        <section class="question" data-index="0">
+         <h1 id= "next">Code Quiz Challenge </h1> 
+         <p2> You have two minutes to answer the following questions.</p2>
+            <button data-choice="0">Start Quiz </button>
+        </section>   
     </header>
-    <section class="question" data-index="0"> 
-        <h2 id="next">Question 1</h2>
-        <button data-choice="0">5</button>
-        <button data-choice="1">10</button>
-        <button data-choice="2">15</button>
-        <button data-choice="3">20</button>
-    </section>
-    <section class="question" data-index="1"> 
-        <h2 id="next">Question 2</h2>
-        <button data-choice="0">5</button>
-        <button data-choice="1">10</button>
-        <button data-choice="2">15</button>
-        <button data-choice="3">20</button>
-       </section>
-       <section class="question" data-index="2"> 
-        <h2 id="next">Question 3</h2>
-        <button data-choice="0">5</button>
-        <button data-choice="1">10</button>
-        <button data-choice="2">15</button>
-        <button data-choice="3">20</button>
-       </section>
-       <section class="question" data-index="3"> 
-        <h2 id="next">Question 4</h2>
-        <button data-choice="0">5</button>
-        <button data-choice="1">10</button>
-        <button data-choice="2">15</button>
-        <button data-choice="3">20</button>
-       </section>
 
-       <h1 class="time" style="text-align:center;"></h1>
-    <div id="main"></div>
-    <script src="./script.js"></script>
+        <body>
+            <p id="countdown">2:00</p>
+        
+            <section class="question" data-index="1"> 
+                <h2 id="next">Question 1</h2>
+                <button data-choice="0">5</button>
+                <button data-choice="1">10</button>
+                <button data-choice="2">15</button>
+                <button data-choice="3">20</button>
+            </section>
+            <section class="question" data-index="2"> 
+                <h2 id="next">Question 2</h2>
+                <button data-choice="0">5</button>
+                <button data-choice="1">10</button>
+                <button data-choice="2">15</button>
+                <button data-choice="3">20</button>
+            </section>
+            <section class="question" data-index="3"> 
+                <h2 id="next">Question 3</h2>
+                <button data-choice="0">5</button>
+                <button data-choice="1">10</button>
+                <button data-choice="2">15</button>
+                <button data-choice="3">20</button>
+            </section>
+            <section class="question" data-index="4"> 
+                <h2 id="next">Question 4</h2>
+                <button data-choice="0">5</button>
+                <button data-choice="1">10</button>
+                <button data-choice="2">15</button>
+                <button data-choice="3">20</button>
+            </section>
+        </body>    
+            <section class="question" data-index="5">
+                <h2> Game Over</h2>
+
+            </section>
+                
+            
+
+            <h2 class="time" style="text-align:center;"></h2>
+   
+            
+
+      <script src="./script.js"></script>
 </body>
 </html>

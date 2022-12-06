@@ -1,8 +1,22 @@
 var questions = document.querySelectorAll('.question');
 var cursor = 0;
 
-
 var correctAnswers = ["0", "3", "1", "2"];
+
+const startingMinutes=1;
+let time = startingMinutes * 59;
+
+const countdownEl = document.getElementById('countdown');
+
+setInterval(updateCountdown, 1000);
+
+function updateCountdown() {
+    const minutes = Math.floor(time / 60);
+    let seconds = time % 60;
+
+    countdownEl.innerHTML = `${minutes}: ${seconds}`;
+    time--;
+}
 
 var displayQuestion = function () {
     for (var question of questions) {

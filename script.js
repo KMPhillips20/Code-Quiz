@@ -2,6 +2,9 @@ var questions = document.querySelectorAll('.question');
 var cursor = 0;
 var correctAnswers = ["0", "B", "D", "A","B","B"];
 const startingMinutes=1;
+var endScreen= document.querySelector('#endScreen');
+var highScoreScreen= document.querySelector('#highScoreScreen');
+
 
 
 // Timer
@@ -39,6 +42,8 @@ var advance = function(event) {
          displayQuestion();
     }
 };
+
+
 document.addEventListener('click', advance);
 
 

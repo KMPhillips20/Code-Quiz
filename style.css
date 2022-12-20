@@ -12,9 +12,12 @@ h1{
     font-size: 75px;
 }
 
+
+
 p {
-    text-decoration: underline;
-    color:yellow;
+
+    color:rgb(255, 0, 0);
+    font-size: 45px;
 }
 
 

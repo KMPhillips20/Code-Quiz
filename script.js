@@ -8,30 +8,33 @@ var score = document.querySelector('#score');
 var name = document.querySelector('#name')
 var highScore = document.querySelector('#highScore');
 var Submit = document.querySelector('#Submit');
-var playAgain = document.querySelector('#playAgain')
+var playAgain = document.querySelector('#playAgain');
+var timeEl = document.querySelector('#time');
 // var cursor = 0;
 // var correctAnswers = ["B", "D", "A","B","B"];
 
 var index = 0;
+var timeLeft = 100;
+var timer;
 
 var questions = [
    {
         message: "1. What is the name of the statement that is used to exit or end a loop?",
         possible: [
-            'A',
-            'B',
-            'C',
-            'D',
+            'A. Break Statement',
+            'B. Conditional statement',
+            'C. Close statement',
+            'D. Falter statement',
         ],
         correct: 1
     },
     {
         message: "2. What is considered to be the most popular programming language in the world?",
         possible: [
-            'A',
-            'B',
-            'C',
-            'D',
+            'A. Swift',
+            'B. Ruby',
+            'C. HTML',
+            'D. JavaScript',
 
         ],
         correct: 3
@@ -39,30 +42,30 @@ var questions = [
     {
         message: "3. What kind of statement is used to execute actions based on a trigger or condition?",
         possible: [
-            'A',
-            'B',
-            'C',
-            'D',
+            'A. Conditional Statement',
+            'B. Boolean Variable',
+            'C. RegExp or Regular Expression',
+            'D. Fired Event',
         ],
         correct: 0
     },
     {
         message: "4. In JavaScript, what element is used to store and manipulate text, usually in multiples?",
         possible: [
-            'A',
-            'B',
-            'C',
-            'D',
+            'A. Recorders',
+            'B. Strings',
+            'C. Arrays',
+            'D. Variables',
         ],
         correct: 1
     },
     {
         message: "5. In JavaScript, what is used in conjunction with HTML to “react” to certain elements?",
         possible: [
-            'A',
-            'B',
-            'C',
-            'D',
+            'A. RegExp',
+            'B. Boolean',
+            'C. Condition',
+            'D. Events',
         ],
         correct: 1
     },
@@ -71,23 +74,41 @@ var questions = [
 
 var startTimer = function(){
     console.log('time started');
+    timer = setInterval (function (){
+        timeLeft--;
+        timeEl.textContent = timeLeft;
+
+    }, 1000);
 };
 
 var displayQuestion = function() {
-    console.log('display questions');
+    var currentQuestion = questions[index];
+
+    question.querySelector('h2').textContent = currentQuestion.message;
+    button.innerHTML = null;
+
+    for (var i = 0; i < currentQuestion.possible.length; i++) {
+        var buttonEl = document.createElement('button');
+        buttonEl.textContent = currentQuestion.possible[i];
+        buttonEl.dataset.id = i;
+        button.appendChild(buttonEl);
+    }
+
+   console.log('Quesiton Displayed');
 };
 
 var displayEnd = function() {
     console.log('Game Over');
     hideScreen();
     end.style.display = "block";
+    score.textContent = timeLeft;
+    clearInterval(timer);
 };
 
-var nextQuestion = function() {
-    var correct = true;
-    index++;
+var nextQuestion = function(element) {
+    var correct = element.dataset.id === questions[index].correct;
 
-    if (index >= questions.length) {
+    if (index >= questions.length - 1) {
         displayEnd();
         return;
     }
@@ -97,7 +118,10 @@ var nextQuestion = function() {
     } else {
         console.log("Wrong");
     }
+
+    index++;
     displayQuestion();
+   
 };
 
 
@@ -118,22 +142,32 @@ startBTN.addEventListener('click', function() {
 
 button.addEventListener('click', function (event) {
     var element = event.target;
+
     if (element.matches('button')) {
-        nextQuestion();
+        nextQuestion(element);
     }
 });
 
 Submit.addEventListener('click', function() {
     console.log('send to local storage');
+    var highsScore = {
+        score: timeLeft,
+        initials: initialsInput.value.trim(),
+    }
+    var highScoreList = JSON.parse(localStorage.getItem)
     hideScreen();
     highScore.style.display = "block";
 });
 
 playAgain.addEventListener('click', function() {
     console.log('Display Start Screen');
+    // RESET INDEX
+    // RESET TIMER
     hideScreen();
     start.style.display = "block";
 });
 
 hideScreen();
 start.style.display = "block";
+
+timeEl.textContent = timeLeft;

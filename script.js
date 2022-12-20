@@ -10,7 +10,7 @@ var highScoreScreen = document.querySelector('#highScoreScreen');
 var Submit = document.querySelector('#Submit');
 var playAgain = document.querySelector('#playAgain');
 var timeEl = document.querySelector('#time');
-// var cursor = 0;
+
 // var correctAnswers = ["B", "D", "A","B","B"];
 
 var index = 0;
@@ -172,8 +172,6 @@ Submit.addEventListener('click', function() {
 
 playAgain.addEventListener('click', function() {
     console.log('Display Start Screen');
-    // RESET INDEX
-    // RESET TIMER
     hideScreen();
     start.style.display = "block";
 });

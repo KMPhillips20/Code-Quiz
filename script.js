@@ -4,9 +4,9 @@ var startBTN = document.querySelector('#startBTN');
 var button = document.querySelector('#button')
 var start = document.querySelector('#start');
 var end= document.querySelector('#end');
-var score = document.querySelector('#score');
-var name = document.querySelector('#name')
-var highScore = document.querySelector('#highScore');
+var scoreLabel = document.querySelector('#scoreLabel');
+var initialsInput = document.querySelector('#initials');
+var highScoreScreen = document.querySelector('#highScoreScreen');
 var Submit = document.querySelector('#Submit');
 var playAgain = document.querySelector('#playAgain');
 var timeEl = document.querySelector('#time');
@@ -99,9 +99,23 @@ var displayQuestion = function() {
 
 var displayEnd = function() {
     console.log('Game Over');
+    var highScore = {
+        score: timeLeft,
+        initials: initialsInput.value.trim(),
+    }
+    var highScoreList = JSON.parse(localStorage.getItem("highScores")) || [];
+    highScoreList.push(highScore);
+    localStorage.setItem("highScores", JSON.stringify(highScoreList));
+
+    for (var i = 0; i < highScoreList.length; i++) {
+        var listItem = document.createElement('li');
+        listItem.textContent = highScoreList[i].initials + ": " + highScoreList[i].score;
+        highScoreScreen.querySelector('ul').appendChild(listItem);
+    }
+
     hideScreen();
     end.style.display = "block";
-    score.textContent = timeLeft;
+    scoreLabel.textContent = timeLeft;
     clearInterval(timer);
 };
 
@@ -150,13 +164,10 @@ button.addEventListener('click', function (event) {
 
 Submit.addEventListener('click', function() {
     console.log('send to local storage');
-    var highsScore = {
-        score: timeLeft,
-        initials: initialsInput.value.trim(),
-    }
-    var highScoreList = JSON.parse(localStorage.getItem)
     hideScreen();
-    highScore.style.display = "block";
+    highScoreScreen.style.display = "block";
+    scoreLabel.textContent = timeLeft
+    clearInterval(timer)
 });
 
 playAgain.addEventListener('click', function() {
